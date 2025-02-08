@@ -31,8 +31,6 @@ global functional_testing_summary
 buffered_figma_image = None
 functional_testing_summary = []
 
-
-
 def start_browser():
     global driver
     driver = helium.start_chrome(headless=False, options=chrome_options)

@@ -8,6 +8,7 @@ import importlib.resources as pkg_resources
 
 from .constants import version
 from .functional_testing_agent import start_functional_testing_agent
+from .visual_testing_agent import start_visual_testing_agent
 
 def initialize():
     if os.path.isfile(".yumevalidator.json"):
@@ -57,7 +58,7 @@ def main():
         return initialize()
     
     if args == ["test"]:
-        start_functional_testing_agent()
+        start_visual_testing_agent()
         return
     
     if args == ["report"]:
