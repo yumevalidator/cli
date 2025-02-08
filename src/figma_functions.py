@@ -52,9 +52,9 @@ async def figma_print_target(target_index):
         response = requests.get(f"https://api.figma.com/v1/images/{figma_key}?ids={target_index}", headers={"X-Figma-Token": figma_token})
         image_url = response.json()["images"][target_index]
         image_response = requests.get(image_url)
-        if not os.path.exists("figma"):
-            os.makedirs("figma")
-        with open(f"figma/{target_index}.png", "wb") as img_file:
+        if not os.path.exists(".yumevalidator"):
+            os.makedirs(".yumevalidator")
+        with open(f".yumevalidator/{target_index}.png", "wb") as img_file:
             img_file.write(image_response.content)
             return f"{target_index}.png"
 
@@ -89,7 +89,7 @@ async def figma_describe_screen(screen_image):
     with open(".yumevalidator.json") as f:
         config = json.load(f)
         client = OpenAI(api_key=config["openai_api_key"])
-        with open(f"figma/{screen_image}", "rb") as image_file:
+        with open(f".yumevalidator/{screen_image}", "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
             img_url = f"data:image/png;base64,{encoded_string}"
             response = client.chat.completions.create(

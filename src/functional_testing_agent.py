@@ -47,6 +47,7 @@ def save_screenshot(memory_step: ActionStep, agent: CodeAgent) -> None:
             if isinstance(previous_memory_step, ActionStep) and previous_memory_step.step_number <= current_step - 2:
                 previous_memory_step.observations_images = None
         png_bytes = driver.get_screenshot_as_png()
+
         image = Image.open(BytesIO(png_bytes))
         print(f"Captured a browser screenshot: {image.size} pixels")
         memory_step.observations_images = [image.copy()]  # Create a copy to ensure it persists
@@ -116,17 +117,22 @@ def close_popups() -> str:
 
 
 @tool
-def end_testing_page(is_there_error: bool, testing_description: str) -> str:
+def end_testing_page(page_title: str, is_there_error: bool, testing_description: str) -> str:
     """
     End the testing of the current page
     Args:
+        page_title: human-readable name of the page that has beent tested",
         is_there_error: whether if there is an error during the testing
         testing_description: the description of the testing, what has been tested in a organized list, with errors listed out properly
     Returns:
         status
     """
     global functional_testing_summary
-    functional_testing_summary.append({not is_there_error, testing_description})
+    functional_testing_summary.append({
+        "page_title": page_title,
+        "succeeded": not is_there_error, 
+        "description": testing_description
+        })
     return "Testing of the current page can be ended successfully"
 
 

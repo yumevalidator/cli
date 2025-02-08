@@ -1,0 +1,410 @@
+[
+    {
+        "page_title": "Homepage",
+        "page_id": "1:247",
+        "working": [
+            {
+                "title": "Header Matches",
+                "description": "The header text and buttons are correct as per the design."
+            },
+            {
+                "title": "Main Title Display",
+                "description": "The main title 'Your dream jobs in one platform' matches the design."
+            },
+            {
+                "title": "Button Positioning",
+                "description": "Login and sign-up buttons are properly positioned."
+            }
+        ],
+        "wrong": [
+            {
+                "title": "Search Bar Text Mismatch",
+                "description": "The text in the search bar differs from the design: 'Search jobs' instead of 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator Missing",
+                "description": "The dropdown indicator for 'About us' is missing on the website."
+            },
+            {
+                "title": "Search Bar Text Mismatch",
+                "description": "The text in the search bar differs from the design: 'Search jobs' instead of 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator Missing",
+                "description": "The dropdown indicator for 'About us' is missing on the website."
+            },
+            {
+                "title": "Button Styles",
+                "description": "The 'Sign up' button is styled differently in the implemented page compared to the Figma design."
+            },
+            {
+                "title": "Visual Fidelity - Incorrect Elements",
+                "description": "The padding and spacing are slightly different, and the font color appears off."
+            },
+            {
+                "title": "Font Weight",
+                "description": "Font weights for headings and labels are slightly off."
+            }
+        ],
+        "recommendations": [
+            {
+                "title": "Search Bar Text",
+                "description": "Adjust the search bar text to match the design 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator",
+                "description": "Add the dropdown indicator for 'About us' as per the design."
+            },
+            {
+                "title": "Typography Consistency",
+                "description": "Ensure the font size and weight are consistent across different job titles as per the Figma design."
+            },
+            {
+                "title": "Whitespace Optimization",
+                "description": "Consider optimizing the whitespace between job cards for better visual alignment with the Figma design."
+            },
+            {
+                "title": "Visual Fidelity - Recommended Improvements",
+                "description": "Consider adjusting padding and spacing to match the design more closely. Review font styling for consistency."
+            },
+            {
+                "title": "Font Consistency",
+                "description": "Ensure font weights match the Figma design for consistency."
+            },
+            {
+                "title": "Button Contrast",
+                "description": "Enhance button contrast for better visibility."
+            }
+        ]
+    },
+    {
+        "page_title": "Jobs",
+        "page_id": "1:259",
+        "working": [
+            {
+                "title": "Header Matches",
+                "description": "The header text and buttons are correct as per the design."
+            },
+            {
+                "title": "Main Title Display",
+                "description": "The main title 'Your dream jobs in one platform' matches the design."
+            },
+            {
+                "title": "Button Positioning",
+                "description": "Login and sign-up buttons are properly positioned."
+            },
+            {
+                "title": "Header Matches",
+                "description": "The header text and buttons are correct as per the design."
+            },
+            {
+                "title": "Main Title Display",
+                "description": "The main title 'Your dream jobs in one platform' matches the design."
+            },
+            {
+                "title": "Button Positioning",
+                "description": "Login and sign-up buttons are properly positioned."
+            },
+            {
+                "title": "Job Titles",
+                "description": "The job titles match exactly between the Figma design and the implementation."
+            },
+            {
+                "title": "Search Bar Position",
+                "description": "The search bar is well-positioned below the 'List of Jobs' title, as in the Figma design."
+            },
+            {
+                "title": "Visual Fidelity - Correct Elements",
+                "description": "The layout, text, and buttons are consistent with Figma design."
+            },
+            {
+                "title": "Navigation Bar",
+                "description": "The top navigation bar is correctly styled and positioned."
+            },
+            {
+                "title": "Login Form",
+                "description": "Login heading, input fields, and buttons are correctly aligned similar to design."
+            }
+        ],
+        "wrong": [
+            {
+                "title": "Search Bar Text Mismatch",
+                "description": "The text in the search bar differs from the design: 'Search jobs' instead of 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator Missing",
+                "description": "The dropdown indicator for 'About us' is missing on the website."
+            },
+            {
+                "title": "Search Bar Text Mismatch",
+                "description": "The text in the search bar differs from the design: 'Search jobs' instead of 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator Missing",
+                "description": "The dropdown indicator for 'About us' is missing on the website."
+            },
+            {
+                "title": "Button Styles",
+                "description": "The 'Sign up' button is styled differently in the implemented page compared to the Figma design."
+            },
+            {
+                "title": "Visual Fidelity - Incorrect Elements",
+                "description": "The padding and spacing are slightly different, and the font color appears off."
+            },
+            {
+                "title": "Font Weight",
+                "description": "Font weights for headings and labels are slightly off."
+            }
+        ],
+        "recommendations": [
+            {
+                "title": "Search Bar Text",
+                "description": "Adjust the search bar text to match the design 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator",
+                "description": "Add the dropdown indicator for 'About us' as per the design."
+            },
+            {
+                "title": "Typography Consistency",
+                "description": "Ensure the font size and weight are consistent across different job titles as per the Figma design."
+            },
+            {
+                "title": "Whitespace Optimization",
+                "description": "Consider optimizing the whitespace between job cards for better visual alignment with the Figma design."
+            },
+            {
+                "title": "Visual Fidelity - Recommended Improvements",
+                "description": "Consider adjusting padding and spacing to match the design more closely. Review font styling for consistency."
+            },
+            {
+                "title": "Font Consistency",
+                "description": "Ensure font weights match the Figma design for consistency."
+            },
+            {
+                "title": "Button Contrast",
+                "description": "Enhance button contrast for better visibility."
+            }
+        ]
+    },
+    {
+        "page_title": "Sign up",
+        "page_id": "1:282",
+        "working": [
+            {
+                "title": "Header Matches",
+                "description": "The header text and buttons are correct as per the design."
+            },
+            {
+                "title": "Main Title Display",
+                "description": "The main title 'Your dream jobs in one platform' matches the design."
+            },
+            {
+                "title": "Button Positioning",
+                "description": "Login and sign-up buttons are properly positioned."
+            },
+            {
+                "title": "Header Matches",
+                "description": "The header text and buttons are correct as per the design."
+            },
+            {
+                "title": "Main Title Display",
+                "description": "The main title 'Your dream jobs in one platform' matches the design."
+            },
+            {
+                "title": "Button Positioning",
+                "description": "Login and sign-up buttons are properly positioned."
+            },
+            {
+                "title": "Job Titles",
+                "description": "The job titles match exactly between the Figma design and the implementation."
+            },
+            {
+                "title": "Search Bar Position",
+                "description": "The search bar is well-positioned below the 'List of Jobs' title, as in the Figma design."
+            },
+            {
+                "title": "Visual Fidelity - Correct Elements",
+                "description": "The layout, text, and buttons are consistent with Figma design."
+            },
+            {
+                "title": "Navigation Bar",
+                "description": "The top navigation bar is correctly styled and positioned."
+            },
+            {
+                "title": "Login Form",
+                "description": "Login heading, input fields, and buttons are correctly aligned similar to design."
+            }
+        ],
+        "wrong": [
+            {
+                "title": "Search Bar Text Mismatch",
+                "description": "The text in the search bar differs from the design: 'Search jobs' instead of 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator Missing",
+                "description": "The dropdown indicator for 'About us' is missing on the website."
+            },
+            {
+                "title": "Search Bar Text Mismatch",
+                "description": "The text in the search bar differs from the design: 'Search jobs' instead of 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator Missing",
+                "description": "The dropdown indicator for 'About us' is missing on the website."
+            },
+            {
+                "title": "Button Styles",
+                "description": "The 'Sign up' button is styled differently in the implemented page compared to the Figma design."
+            },
+            {
+                "title": "Visual Fidelity - Incorrect Elements",
+                "description": "The padding and spacing are slightly different, and the font color appears off."
+            },
+            {
+                "title": "Font Weight",
+                "description": "Font weights for headings and labels are slightly off."
+            }
+        ],
+        "recommendations": [
+            {
+                "title": "Search Bar Text",
+                "description": "Adjust the search bar text to match the design 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator",
+                "description": "Add the dropdown indicator for 'About us' as per the design."
+            },
+            {
+                "title": "Typography Consistency",
+                "description": "Ensure the font size and weight are consistent across different job titles as per the Figma design."
+            },
+            {
+                "title": "Whitespace Optimization",
+                "description": "Consider optimizing the whitespace between job cards for better visual alignment with the Figma design."
+            },
+            {
+                "title": "Visual Fidelity - Recommended Improvements",
+                "description": "Consider adjusting padding and spacing to match the design more closely. Review font styling for consistency."
+            },
+            {
+                "title": "Font Consistency",
+                "description": "Ensure font weights match the Figma design for consistency."
+            },
+            {
+                "title": "Button Contrast",
+                "description": "Enhance button contrast for better visibility."
+            }
+        ]
+    },
+    {
+        "page_title": "Login",
+        "page_id": "1:302",
+        "working": [
+            {
+                "title": "Header Matches",
+                "description": "The header text and buttons are correct as per the design."
+            },
+            {
+                "title": "Main Title Display",
+                "description": "The main title 'Your dream jobs in one platform' matches the design."
+            },
+            {
+                "title": "Button Positioning",
+                "description": "Login and sign-up buttons are properly positioned."
+            },
+            {
+                "title": "Header Matches",
+                "description": "The header text and buttons are correct as per the design."
+            },
+            {
+                "title": "Main Title Display",
+                "description": "The main title 'Your dream jobs in one platform' matches the design."
+            },
+            {
+                "title": "Button Positioning",
+                "description": "Login and sign-up buttons are properly positioned."
+            },
+            {
+                "title": "Job Titles",
+                "description": "The job titles match exactly between the Figma design and the implementation."
+            },
+            {
+                "title": "Search Bar Position",
+                "description": "The search bar is well-positioned below the 'List of Jobs' title, as in the Figma design."
+            },
+            {
+                "title": "Visual Fidelity - Correct Elements",
+                "description": "The layout, text, and buttons are consistent with Figma design."
+            },
+            {
+                "title": "Navigation Bar",
+                "description": "The top navigation bar is correctly styled and positioned."
+            },
+            {
+                "title": "Login Form",
+                "description": "Login heading, input fields, and buttons are correctly aligned similar to design."
+            }
+        ],
+        "wrong": [
+            {
+                "title": "Search Bar Text Mismatch",
+                "description": "The text in the search bar differs from the design: 'Search jobs' instead of 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator Missing",
+                "description": "The dropdown indicator for 'About us' is missing on the website."
+            },
+            {
+                "title": "Search Bar Text Mismatch",
+                "description": "The text in the search bar differs from the design: 'Search jobs' instead of 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator Missing",
+                "description": "The dropdown indicator for 'About us' is missing on the website."
+            },
+            {
+                "title": "Button Styles",
+                "description": "The 'Sign up' button is styled differently in the implemented page compared to the Figma design."
+            },
+            {
+                "title": "Visual Fidelity - Incorrect Elements",
+                "description": "The padding and spacing are slightly different, and the font color appears off."
+            },
+            {
+                "title": "Font Weight",
+                "description": "Font weights for headings and labels are slightly off."
+            }
+        ],
+        "recommendations": [
+            {
+                "title": "Search Bar Text",
+                "description": "Adjust the search bar text to match the design 'Search for a job'."
+            },
+            {
+                "title": "Dropdown Indicator",
+                "description": "Add the dropdown indicator for 'About us' as per the design."
+            },
+            {
+                "title": "Typography Consistency",
+                "description": "Ensure the font size and weight are consistent across different job titles as per the Figma design."
+            },
+            {
+                "title": "Whitespace Optimization",
+                "description": "Consider optimizing the whitespace between job cards for better visual alignment with the Figma design."
+            },
+            {
+                "title": "Visual Fidelity - Recommended Improvements",
+                "description": "Consider adjusting padding and spacing to match the design more closely. Review font styling for consistency."
+            },
+            {
+                "title": "Font Consistency",
+                "description": "Ensure font weights match the Figma design for consistency."
+            },
+            {
+                "title": "Button Contrast",
+                "description": "Enhance button contrast for better visibility."
+            }
+        ]
+    }
+]

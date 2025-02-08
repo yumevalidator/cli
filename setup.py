@@ -14,7 +14,8 @@ setup(
         'selenium',
         'helium',
         'pillow',
-        'openai'
+        'openai',
+        'cors'
     ],  # Add dependencies if needed
     python_requires=">=3.6",
     entry_points={

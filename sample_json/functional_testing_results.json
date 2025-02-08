@@ -1,0 +1,27 @@
+[
+    {
+        "page_title": "Home Page",
+        "succeeded": true,
+        "description": "All elements loaded correctly and no errors found."
+    },
+    {
+        "page_title": "Login Page",
+        "succeeded": false,
+        "description": "Error encountered during login process."
+    },
+    {
+        "page_title": "Dashboard",
+        "succeeded": true,
+        "description": "Dashboard widgets displayed as expected."
+    },
+    {
+        "page_title": "Profile Page",
+        "succeeded": true,
+        "description": "Profile information updated successfully."
+    },
+    {
+        "page_title": "Settings Page",
+        "succeeded": false,
+        "description": "Settings changes not saved due to server error."
+    }
+]
