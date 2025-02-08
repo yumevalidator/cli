@@ -6,37 +6,7 @@ from http.server import SimpleHTTPRequestHandler, HTTPServer
 import webbrowser
 import importlib.resources as pkg_resources
 
-package_version = "0.1.0";
-
-def clear_last_lines(num_lines):
-    for _ in range(num_lines):
-        # Move cursor up one line
-        sys.stdout.write("\033[F")
-        # Clear the line
-        sys.stdout.write("\033[K")
-
-def clear_console():
-    os.system("cls" if os.name == "nt" else "clear")
-
-def draw_menu(options, selected_idx):
-    #clear_console()
-    for idx, option in enumerate(options):
-        prefix = "> " if idx == selected_idx else "  "
-        print(f"{prefix}{option}")
-
-def selector_menu(options):
-    selected_idx = 0
-    while True:
-        draw_menu(options, selected_idx)
-        key = readchar.readkey()
-        if key == readchar.key.UP and selected_idx > 0:
-            selected_idx -= 1
-            clear_last_lines(len(options))
-        elif key == readchar.key.DOWN and selected_idx < len(options) - 1:
-            selected_idx += 1
-            clear_last_lines(len(options))
-        elif key == readchar.key.ENTER:
-            return selected_idx
+from constants import version
 
 def initialize():
     if os.path.isfile(".yumevalidator.json"):
@@ -45,18 +15,16 @@ def initialize():
             return "Initialization cancelled"
     
     figma_token = input("Please enter your Figma token: ")
-    
     figma_key = input("Please enter the relevant figma board key: ")
-    
-    ai_options = ["OpenAI", "Claude"]
-    ai_selected = selector_menu(ai_options)
-    ai_api_key = input("Please enter your AI API key:")
+    openai_api_key = input("Please enter your OpenAI API key:")
+    website_url = input("Please enter the website URL you want to validate: ")
+
     with open(".yumevalidator.json", "w") as f:
         json.dump({
             "figma_token": figma_token,
             "figma_key": figma_key,
-            "ai_provider": ai_options[ai_selected],
-            "ai_api_key": ai_api_key
+            "openai_api_key": openai_api_key,
+            "website_url": website_url
         }, f, indent=4)
     
     with open(".gitignore") as f:
@@ -82,7 +50,7 @@ def main():
         raise ValueError("No command line arguments provided.")
     
     if args == ["version"]:
-        return "Version " + package_version
+        return "Version " + version
 
     if args == ["init"]:
         return initialize()
@@ -94,7 +62,6 @@ def main():
         return display_reporting_screen()
     
     print("Command line arguments:", args)
-
 
 if __name__ == "__main__":
     main() 

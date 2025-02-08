@@ -2,3 +2,8 @@ setuptools
 build
 twine
 readchar
+smolagents
+selenium
+helium
+pillow
+openai

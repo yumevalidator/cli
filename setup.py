@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="yumevalidator",  # Change to your package name
-    version="0.1.4",
+    version="0.1.5",
     packages=find_packages(),
     include_package_data=True,
     package_data={
@@ -10,6 +10,11 @@ setup(
     },
     install_requires=[
         'readchar',
+        'smolagents',
+        'selenium',
+        'helium',
+        'pillow',
+        'figmapy'
     ],  # Add dependencies if needed
     python_requires=">=3.6",
     entry_points={
