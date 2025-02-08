@@ -6,5 +6,10 @@
 
 ```
 pip3 install --editable .
-yumevalidator --version
+yumevalidator version
+```
+
+Initialze react project to use the testing suite
+```
+yumevalidator init
 ```
