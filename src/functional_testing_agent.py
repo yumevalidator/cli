@@ -15,8 +15,8 @@ from smolagents import CodeAgent, tool
 from smolagents.agents import ActionStep
 from smolagents import CodeAgent, OpenAIServerModel
 
-import constants
-import figma_functions
+from .constants import main_openai_model, helium_instructions
+from .figma_functions import *
 # Configure Chrome options
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--force-device-scale-factor=1")
@@ -24,8 +24,11 @@ chrome_options.add_argument("--window-size=1000,1350")
 chrome_options.add_argument("--disable-pdf-viewer")
 chrome_options.add_argument("--window-position=0,0")
 
-# Initialize the browser
-driver = helium.start_chrome(headless=False, options=chrome_options)
+global driver
+
+def start_browser():
+    global driver
+    driver = helium.start_chrome(headless=False, options=chrome_options)
 
 functional_test_untested_user_interface = []
 
@@ -81,23 +84,26 @@ def close_popups() -> str:
 
 
 def start_functional_testing_agent():
-    asyncio.run(figma_functions.figma_get_all_pages())
+    start_browser()
+    asyncio.run(figma_get_all_pages())
     with open(".yumevalidator.json") as f:
-        functional_test_untested_user_interface = figma_functions.figma_pages
+        global functional_test_untested_user_interface
+        functional_test_untested_user_interface = get_updated_figma_pages()
         config = json.load(f)
-        model_id = constants.main_openai_model
+        model_id = main_openai_model
         model = OpenAIServerModel(model_id, "https://api.openai.com/v1", api_key=config["openai_api_key"])
-        
+
         for page in functional_test_untested_user_interface:
-            asyncio.run(figma_functions.figma_print_target(page))
-            interactable_nodes = asyncio.run(figma_functions.figma_get_all_interactable_elements_from_node(page))
-            page_description = asyncio.run(figma_functions.figma_describe_screen(f"{page}.png"))
+            print("hmm")
+            asyncio.run(figma_print_target(page))
+            interactable_nodes = figma_get_all_interactable_elements_from_node(page)
+            page_description = asyncio.run(figma_describe_screen(f"{page}.png"))
             for interactable_node in interactable_nodes:
-                asyncio.run(figma_functions.figma_print_target(interactable_node))
+                asyncio.run(figma_print_target(interactable_node))
             
             # Create the agent
             agent = CodeAgent(
-                tools=[go_back, close_popups, search_item_ctrl_f, figma_functions.figma_get_image],
+                tools=[go_back, close_popups, search_item_ctrl_f, figma_get_image, figma_get_interaction_target],
                 model=model,
                 additional_authorized_imports=["helium"],
                 step_callbacks=[save_screenshot],
@@ -110,6 +116,13 @@ def start_functional_testing_agent():
             execution_request =f"""
             Your objective is to test the functionality of the website by looking at the Figma Design Image, and interacting with the specified elements on the page.
             It might lead you to a different webpage, but you should always try to go back to the original webpage to finish testing the elements on that page.
+
+            If the website is entirely white, it is most likely that you forgot to visit the website after opening the browser. Do not do multiple actions in one settings, because the browser might not load as fast as you think.
+
+            The website you need to visit is:
+            {
+                config["website_url"]
+            }
 
             You can use the tools to determine how the specified element looks like on the page and what is the result of interacting with that particular element.
 
@@ -129,8 +142,9 @@ def start_functional_testing_agent():
             #Please navigate to https://en.wikipedia.org/wiki/Chicago and give me a sentence containing the word "1992" that mentions a construction accident.
             #"""
 
-            agent_output = agent.run(execution_request + constants.helium_instructions)
+            agent_output = agent.run(execution_request + helium_instructions)
             print("Final output:")
             print(agent_output)
-        
-start_functional_testing_agent()
+
+if __name__ == "__main__":        
+    start_functional_testing_agent()

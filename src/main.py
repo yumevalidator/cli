@@ -6,7 +6,8 @@ from http.server import SimpleHTTPRequestHandler, HTTPServer
 import webbrowser
 import importlib.resources as pkg_resources
 
-from constants import version
+from .constants import version
+from .functional_testing_agent import start_functional_testing_agent
 
 def initialize():
     if os.path.isfile(".yumevalidator.json"):
@@ -56,7 +57,8 @@ def main():
         return initialize()
     
     if args == ["test"]:
-        return "running tests"
+        start_functional_testing_agent()
+        return
     
     if args == ["report"]:
         return display_reporting_screen()

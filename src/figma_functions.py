@@ -7,11 +7,14 @@
 import requests
 import json
 import asyncio
+from io import BytesIO
 
 from smolagents import OpenAIServerModel, tool
 from openai import OpenAI
+from PIL import Image
 
-import constants
+from .constants import *
+
 import base64
 import os
 
@@ -19,11 +22,15 @@ figma_contents = []
 figma_pages = []
 interactable_elements_body = []
 
+def get_updated_figma_pages():
+    return figma_pages
+
 async def figma_get_all_pages():
     """download and update contents from figma into a variable to be processed"""
     with open(".yumevalidator.json") as f:
         global figma_contents
         global figma_pages
+        
         config = json.load(f)
         figma_token = config["figma_token"]
         figma_key = config["figma_key"]
@@ -81,7 +88,7 @@ async def figma_describe_screen(screen_image):
             encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
             img_url = f"data:image/png;base64,{encoded_string}"
             response = client.chat.completions.create(
-                model=constants.main_openai_model,
+                model=main_openai_model,
                 messages=[
                     {
                         "role": "user",
@@ -98,7 +105,7 @@ async def figma_describe_screen(screen_image):
             return response.choices[0].message.content
 
 @tool
-def figma_get_image(element_id: str) -> bytes:
+def figma_get_image(element_id: str) -> BytesIO:
      """
      obtain how a particular element look like on the figma design whether if it is a specific element or an entire page
 
@@ -107,8 +114,8 @@ def figma_get_image(element_id: str) -> bytes:
     Returns:
         the image of the element in bytes
      """
-     with open(f"figma/{element_id}", "rb") as image_file:
-        return image_file.read()
+     with open(f"figma/{element_id}.png", "rb") as image_file:
+        return Image.open(BytesIO(image_file.read()))
 
 @tool
 def figma_get_interaction_target(element_id: str) -> str:
