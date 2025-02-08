@@ -9,6 +9,10 @@ import importlib.resources as pkg_resources
 from .constants import version
 from .functional_testing_agent import start_functional_testing_agent
 from .visual_testing_agent import start_visual_testing_agent
+import threading
+import asyncio
+import subprocess
+import signal
 
 def initialize():
     if os.path.isfile(".yumevalidator.json"):
@@ -36,6 +40,22 @@ def initialize():
         
     return "initialzing project"
 
+def host_report_data():
+    class CORSRequestHandler(SimpleHTTPRequestHandler):
+        def end_headers(self):
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+            self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+            super().end_headers()
+
+    print("Current directory:", os.getcwd())
+    host_current_directory = os.getcwd()
+    os.chdir(host_current_directory + "/.yumevalidator")
+    host_handler = CORSRequestHandler
+    host_httpd = HTTPServer(('localhost', 9001), host_handler)
+    print("Serving on http://localhost:9001 server")
+    host_httpd.serve_forever()
+
 def display_reporting_screen():
     with pkg_resources.path(__package__, 'public') as public_dir:
         print(public_dir)
@@ -60,9 +80,38 @@ def main():
     if args == ["test"]:
         start_visual_testing_agent()
         return
+
+    if args == ["report-server"]:
+        return host_report_data()
     
-    if args == ["report"]:
+    if args == ["report-client"]:
         return display_reporting_screen()
+
+    if args == ["report"]:
+        server_process = subprocess.Popen(["yumevalidator", "report-server"])
+        client_process = subprocess.Popen(["yumevalidator", "report-client"])
+
+        def cleanup():
+            server_process.terminate()
+            client_process.terminate()
+            server_process.wait()
+            client_process.wait()
+
+        signal.signal(signal.SIGINT, cleanup)
+        signal.signal(signal.SIGTERM, cleanup)
+        signal.signal(signal.SIGHUP, cleanup)
+        signal.signal(signal.SIGQUIT, cleanup)
+
+        server_thread = threading.Thread(target=server_process.wait)
+        client_thread = threading.Thread(target=client_process.wait)
+        server_thread.start()
+        client_thread.start()
+        server_thread.join()
+        client_thread.join()
+        return
+    
+    if args == ["test_host"]:
+        return host_report_data()
     
     print("Command line arguments:", args)
 

@@ -2,5 +2,6 @@
 yumevalidator.egg-info
 __pycache__
 .yumevalidator.json
+.yumevalidator/
 private-key
 dist
