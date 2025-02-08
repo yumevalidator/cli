@@ -15,7 +15,7 @@ from smolagents import CodeAgent, tool
 from smolagents.agents import ActionStep
 from smolagents import CodeAgent, OpenAIServerModel
 
-from .constants import main_openai_model, helium_instructions
+from .constants import main_model, helium_instructions
 from .figma_functions import *
 # Configure Chrome options
 chrome_options = webdriver.ChromeOptions()
@@ -146,8 +146,7 @@ def start_functional_testing_agent():
         global functional_test_untested_user_interface
         functional_test_untested_user_interface = get_updated_figma_pages()
         config = json.load(f)
-        model_id = "gpt-4o"
-        model = OpenAIServerModel(model_id, "https://api.openai.com/v1", api_key=config["openai_api_key"])
+        model = OpenAIServerModel(main_model, "https://api.openai.com/v1", api_key=config["openai_api_key"])
 
         for page in functional_test_untested_user_interface:
             asyncio.run(figma_print_target(page))
@@ -229,7 +228,10 @@ def start_functional_testing_agent():
                 agent.run(execution_request + helium_instructions)
             except TypeError:
                 print("completed")
-    print(functional_testing_summary)
+    if not os.path.exists(".yumevalidator"):
+        os.makedirs(".yumevalidator")
+    with open(".yumevalidator/visual_testing_results.json", "w") as outfile:
+        json.dump(functional_testing_summary, outfile, indent=4)
 
 if __name__ == "__main__":        
     start_functional_testing_agent()

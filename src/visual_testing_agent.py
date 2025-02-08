@@ -15,7 +15,7 @@ from smolagents import CodeAgent, tool
 from smolagents.agents import ActionStep
 from smolagents import CodeAgent, OpenAIServerModel
 
-from .constants import main_openai_model, helium_instructions
+from .constants import main_model, helium_instructions
 from .figma_functions import *
 
 chrome_options = webdriver.ChromeOptions()
@@ -204,8 +204,7 @@ def start_visual_testing_agent():
         global visual_test_untested_user_interface
         visual_test_untested_user_interface = get_updated_figma_pages()
         config = json.load(f)
-        model_id = "gpt-4o"
-        model = OpenAIServerModel(model_id, "https://api.openai.com/v1", api_key=config["openai_api_key"])
+        model = OpenAIServerModel(main_model, "https://api.openai.com/v1", api_key=config["openai_api_key"])
 
         for page in visual_test_untested_user_interface:
             current_working_list = []

@@ -88,12 +88,12 @@ async def figma_describe_screen(screen_image):
     # describe what the screen is about to be fed into the next agent
     with open(".yumevalidator.json") as f:
         config = json.load(f)
-        client = OpenAI(api_key=config["openai_api_key"])
+        client = OpenAI(api_key=config["claude_api_key"])
         with open(f".yumevalidator/{screen_image}", "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
             img_url = f"data:image/png;base64,{encoded_string}"
             response = client.chat.completions.create(
-                model=main_openai_model,
+                model=main_model,
                 messages=[
                     {
                         "role": "user",
