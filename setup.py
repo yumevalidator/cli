@@ -2,9 +2,15 @@ from setuptools import setup, find_packages
 
 setup(
     name="yumevalidator",  # Change to your package name
-    version="0.1.0",
+    version="0.1.4",
     packages=find_packages(),
-    install_requires=[],  # Add dependencies if needed
+    include_package_data=True,
+    package_data={
+        '': ['public/*'],
+    },
+    install_requires=[
+        'readchar',
+    ],  # Add dependencies if needed
     python_requires=">=3.6",
     entry_points={
         "console_scripts": [
@@ -12,11 +18,11 @@ setup(
         ],
     },
     author="Victor Mak",
-    author_email="programmer.htetaung@proton.me",
-    description="An experiment that displays 'Hello World' from an executable package",
+    author_email="contact@htetaung.com",
+    description="A GenAI-based UI Validation tool for Deriv AI Hackathon in 2025 Feburary",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/DreamerChaserHAH/python-executable-pypi-experiment",
+    url="https://github.com/yumevalidator/cli",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

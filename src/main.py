@@ -2,6 +2,9 @@ import sys
 import os
 import readchar
 import json
+from http.server import SimpleHTTPRequestHandler, HTTPServer
+import webbrowser
+import importlib.resources as pkg_resources
 
 package_version = "0.1.0";
 
@@ -63,6 +66,16 @@ def initialize():
         
     return "initialzing project"
 
+def display_reporting_screen():
+    with pkg_resources.path(__package__, 'public') as public_dir:
+        print(public_dir)
+        os.chdir(public_dir)
+        handler = SimpleHTTPRequestHandler
+        httpd = HTTPServer(('localhost', 9000), handler)
+        print("Serving on http://localhost:9000")
+        webbrowser.open("http://localhost:9000")
+        httpd.serve_forever()
+
 def main():
     args = sys.argv[1:]
     if not args:
@@ -76,6 +89,10 @@ def main():
     
     if args == ["test"]:
         return "running tests"
+    
+    if args == ["report"]:
+        return display_reporting_screen()
+    
     print("Command line arguments:", args)
 
 
