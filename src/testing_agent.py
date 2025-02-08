@@ -11,9 +11,4 @@ def start_testing():
     with open(".yumevalidator.json") as f:
         config = json.load(f)
         model = constants.instruct_openai_model
-        testing_manager_agent = CodeAgent(
-            tools = [],
-            model = model,
-            managed_agent = []  
-        )
-        model = Infer
+        # test functionally
