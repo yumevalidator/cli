@@ -58,6 +58,11 @@ async def figma_print_target(target_index):
             img_file.write(image_response.content)
             return f"{target_index}.png"
 
+def figma_get_page_name(page_index):
+    # get the name of the page from the figma contents
+    target_page = [node for node in figma_contents if node["id"] == page_index][0]
+    return target_page["name"]
+
 def figma_get_all_interactable_elements_from_node(target_page_index):
     # target_page is a json file that contains information about a figma node
     # repeatable parse the target_page to find all interactable elements
@@ -103,19 +108,6 @@ async def figma_describe_screen(screen_image):
                 ],
             )
             return response.choices[0].message.content
-
-@tool
-def figma_get_image(element_id: str) -> BytesIO:
-     """
-     obtain how a particular element look like on the figma design whether if it is a specific element or an entire page
-
-     Args:
-        element_id: the id of the element in question
-    Returns:
-        the image of the element in bytes
-     """
-     with open(f"figma/{element_id}.png", "rb") as image_file:
-        return Image.open(BytesIO(image_file.read()))
 
 @tool
 def figma_get_interaction_target(element_id: str) -> str:
