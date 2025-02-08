@@ -1,14 +1,7 @@
-from smolagents import CodeAgent, OpenAIServerModel
-
-import json
-import constants
-import figma_functions
+from .visual_testing_agent import start_visual_testing_agent
+from .functional_testing_agent import start_functional_testing_agent
 
 def start_testing():
-    """start running the figma testing agent"""
-    figma_functions.figma_get_all_pages()
-    # read from .yumevalidator.json file\
-    with open(".yumevalidator.json") as f:
-        config = json.load(f)
-        model = constants.instruct_openai_model
-        # test functionally
+    ##tart_visual_testing_agent()
+    start_functional_testing_agent()
+

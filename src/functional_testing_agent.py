@@ -79,7 +79,7 @@ def figma_get_image(element_id: str) -> bool:
         false: image retrieval failed
      """
     
-    with open(f"figma/{element_id}.png", "rb") as img_file:
+    with open(f".yumevalidator/{element_id}.png", "rb") as img_file:
         global buffered_figma_image
         buffered_figma_image = Image.open(BytesIO(img_file.read())).copy()
         print(buffered_figma_image.size)
@@ -185,14 +185,14 @@ def start_functional_testing_agent():
             Here are the available paths of this website, you can visit them by {config["website_url"]}/[path]'
             ```
             {
-                [f for f in os.listdir("src/app") if os.path.isdir(os.path.join("src/app", f))].append("")
+                os.listdir("src/app")
             }
             ````<end_code>
 
             Take these steps step by step to test the interaction functionality. ONLY test the ones that have been mentioned, just because an element is visible, it is not meant to be tested, because it is still under production. Strictly, do not do multiple steps at one time, because it will crash the browser.
             1. Visit the Website
             2. The path of current website is {driver.current_url}, if it is not the same as {figma_get_page_name(page)}, then switch to the correct page. Note that, the image of the page attached does not represent the current page.
-            3. Look into all the interactable elements on the page, one after one
+            3. Look into the interactable_nodes, one after one, do not look into random ones, because they have not been implemented
             4. Use the tool to retrieve the image of the element that is currently being processed
             4. Look at where they lead to
             5. Interact with the element

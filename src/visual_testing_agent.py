@@ -108,7 +108,7 @@ def figma_get_image(element_id: str) -> bool:
         false: image retrieval failed
      """
     
-    with open(f"figma/{element_id}.png", "rb") as img_file:
+    with open(f".yumevalidator/{element_id}.png", "rb") as img_file:
         global buffered_figma_image
         buffered_figma_image = Image.open(BytesIO(img_file.read())).copy()
         print(buffered_figma_image.size)
@@ -211,7 +211,7 @@ def start_visual_testing_agent():
             current_working_list = []
             current_wrong_list = []
             current_recommendation_list = []
-            
+
             current_page_id = page
             current_page_name = figma_get_page_name(page)
             asyncio.run(figma_print_target(page))

@@ -7,8 +7,7 @@ import webbrowser
 import importlib.resources as pkg_resources
 
 from .constants import version
-from .functional_testing_agent import start_functional_testing_agent
-from .visual_testing_agent import start_visual_testing_agent
+from .testing_agent import start_testing
 import threading
 import asyncio
 import subprocess
@@ -78,7 +77,9 @@ def main():
         return initialize()
     
     if args == ["test"]:
-        start_visual_testing_agent()
+        start_testing()
+        report_process = subprocess.Popen(["yumevalidator", "report"])
+        report_process.wait()
         return
 
     if args == ["report-server"]:
