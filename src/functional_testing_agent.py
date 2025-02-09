@@ -230,7 +230,7 @@ def start_functional_testing_agent():
                 print("completed")
     if not os.path.exists(".yumevalidator"):
         os.makedirs(".yumevalidator")
-    with open(".yumevalidator/visual_testing_results.json", "w") as outfile:
+    with open(".yumevalidator/functional_testing_results.json", "w") as outfile:
         json.dump(functional_testing_summary, outfile, indent=4)
 
 if __name__ == "__main__":        
