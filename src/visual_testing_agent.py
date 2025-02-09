@@ -17,6 +17,7 @@ from smolagents import CodeAgent, OpenAIServerModel
 
 from .constants import main_model, helium_instructions
 from .figma_functions import *
+from .difference_image_generator import diff_img
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--force-device-scale-factor=1")
@@ -85,10 +86,14 @@ def save_screenshot(page_id: str) -> bool:
     return False
 
 def add_image_to_observation(memory_step: ActionStep, agent: CodeAgent) -> None:
+    
     global screenshot_image
     global buffered_figma_image
+    global current_page_id
 
     if screenshot_image is not None and buffered_figma_image is not None:
+        #diff_img(current_page_id)
+        #memory_step.observations_images = [Image.open(f".yumevalidator/diff_{current_page_id}.png").copy()]
         memory_step.observations_images = [screenshot_image.copy()]
         memory_step.observations_images.append(buffered_figma_image.copy())
         screenshot_image.close()
@@ -152,17 +157,19 @@ def add_to_working_list(title: str, description: str) -> str:
     return "Working part has been added successfully"
 
 @tool
-def add_to_wrong_list(title: str, description: str) -> str:
+def add_to_wrong_list(title: str, description: str, target_element_id: str) -> str:
     """
     Record which part of the visual testing is wrong
     Args:
         title: the title of the wrong part
         description: the description of the wrong part
+        target_element_id: the id of the element that is wrong (it is the non-human readable token)
     """
     global current_wrong_list
     current_wrong_list.append({
             "title": title,
-            "description": description
+            "description": description,
+            "target_element": target_element_id
         })
     return "Wrong part has been added successfully"
 
@@ -273,10 +280,15 @@ def start_visual_testing_agent():
             go_to("{config["website_url"]}/" + [[current target potential page]]")
             ```<end_code>
 
+            This is how the figma file structure looks like. If needed find the relevant elements in the figma file and get their id for whatever use cases
+            \"\"\"
+            {get_figma_file_structure()}
+            \"\"\"
+
             You can use the tools to determine how the specified element looks like on the page and what is the result of interacting with that particular element.
             
             Even if I say there is "Error in Code Parsing", do not worry about it, because it is just a warning, and it will not affect the testing process.
-
+            
             """
 
             #execution_request = """

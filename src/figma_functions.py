@@ -22,6 +22,8 @@ figma_contents = []
 figma_pages = []
 interactable_elements_body = []
 
+figma_file_structure = []
+
 def get_updated_figma_pages():
     return figma_pages
 
@@ -30,6 +32,7 @@ async def figma_get_all_pages():
     with open(".yumevalidator.json") as f:
         global figma_contents
         global figma_pages
+        global figma_file_structure
         
         config = json.load(f)
         figma_token = config["figma_token"]
@@ -40,6 +43,26 @@ async def figma_get_all_pages():
         print(len(document_children))
         figma_contents = document_children
         figma_pages = [page["id"] for page in document_children]
+        
+        def build_file_structure(node, depth=0, max_depth=4):
+            if depth > max_depth:
+                return None
+            structure = {
+            "name": node["name"],
+            "id": node["id"],
+            "children": []
+            }
+            if "children" in node:
+                for child in node["children"]:
+                    child_structure = build_file_structure(child, depth + 1, max_depth)
+                    if child_structure:
+                        structure["children"].append(child_structure)
+            return structure
+
+        figma_file_structure = [build_file_structure(page) for page in document_children]
+
+def get_figma_file_structure():
+    return figma_file_structure
 
 async def figma_print_target(target_index):
     """

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@animaapp/scooby-cli": "^1.27.0"
+  }
+}
