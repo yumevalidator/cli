@@ -2,14 +2,30 @@
 
 > CLI Tool to execute UI Validation AI Agent and display the report after the process has been completed
 
-## To Run
+## Available Commands
 
+### Install
 ```
 pip3 install --editable .
+```
+
+### Check Version
+```
 yumevalidator version
 ```
 
-Initialze react project to use the testing suite
+### Initialize CLI for a project
 ```
 yumevalidator init
+```
+
+### Display previous report
+```
+yumevalidator report
+```
+
+### Start running tests
+```
+yumevalidator test
+
 ```
